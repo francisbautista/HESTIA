@@ -2,7 +2,7 @@
 #  TODO: Use Gammu for SMS enabling on serial pin
 
 import RPi.GPIO as GPIO
-import time, io, sys, select
+import time, io, sys, select, gammu
 from datetime import datetime
 
 
@@ -15,11 +15,24 @@ camera.sensor_mode=4
 stream = PiCameraCircularIO(camera, seconds=30)
 camera.start_recording(stream, format='h264', quality=20)
 GPIO.setmode(GPIO.BOARD)            #Set GPIO to pin numbering
-pir = 8                             #Assign pin 8 to PIR
+pir = 11                             #Assign pin 8 to PIR
 led = 10                            #Assign pin 10 to LED
 GPIO.setup(pir, GPIO.IN)            #Setup GPIO pin PIR as input
-GPIO.setup(led, GPIO.OUT)   
+GPIO.setup(led, GPIO.OUT)
 
+sm = gammu.StateMachine()
+sm.ReadConfig()
+sm.Init()
+
+INIT_MESSAGE = {
+    'Text': 'SENTINEL ACTIVE.',
+    'Number': '+639988693410',
+}
+
+ALERT_MESSAGE = {
+    'Text': 'MOTION DETECTED. PLEASE CHECK SERVER.',
+    'Number': '+639988693410',
+}
 
 def main():
       
@@ -28,6 +41,7 @@ def main():
     time.sleep(2)                       #Give sensor time to startup
     print ("Active")
     print ("Press Ctrl+c to end program")
+    sm.SendSMS(INIT_MESSAGE)
 
     try:
         while True:
@@ -36,6 +50,7 @@ def main():
                 print ("Motion Detected!")
                 time.sleep(5)
                 if GPIO.input(pir) == True:
+                    sm.SendSMS(ALERT_MESSAGE)
                     print ("A lot of motion detected! Recording video.")        
                     capture_video()
                 print ("Resetting")                 
