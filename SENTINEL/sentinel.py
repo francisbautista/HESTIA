@@ -26,11 +26,13 @@ sm.Init()
 
 INIT_MESSAGE = {
     'Text': 'SENTINEL ACTIVE.',
+    'SMSC': {'Location': 1},
     'Number': '+639988693410',
 }
 
 ALERT_MESSAGE = {
     'Text': 'MOTION DETECTED. PLEASE CHECK SERVER.',
+    'SMSC': {'Location': 1},
     'Number': '+639988693410',
 }
 
