@@ -16,7 +16,7 @@ stream = PiCameraCircularIO(camera, seconds=30)
 camera.start_recording(stream, format='h264', quality=20)
 GPIO.setmode(GPIO.BOARD)            #Set GPIO to pin numbering
 pir = 11                             #Assign pin 8 to PIR
-led = 10                            #Assign pin 10 to LED
+led = 13                            #Assign pin 10 to LED
 GPIO.setup(pir, GPIO.IN)            #Setup GPIO pin PIR as input
 GPIO.setup(led, GPIO.OUT)
 
