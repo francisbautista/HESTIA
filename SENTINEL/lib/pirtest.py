@@ -25,7 +25,7 @@ pir = MotionDetector()
 
 try:
     while True:
-        if bot.is_listen and pir.movement_detected():
+        if pir.movement_detected():
             print("hi")
         else:
             time.sleep(1)
