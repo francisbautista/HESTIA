@@ -4,7 +4,7 @@ configuration file
 
 # Variable to configure
 TOKEN_ID = '1550414528:AAGq2XfHNjt45dzglVIbErxuPiYUgFqHBdo'
-CHAT_ID = '1550414528'
+CHAT_ID = '190461751'
 
 # Variable that can be modified
 VIDEO_TIME = 60  # duration of video recording in second
