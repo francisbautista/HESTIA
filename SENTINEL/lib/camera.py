@@ -18,7 +18,7 @@ class Camera:
 
     def __init__(self, folder):
         self.camera = PiCamera()
-        self.camera.resolution = (1280, 720)
+        self.camera.resolution = (1920, 1080)
         self.camera.sensor_mode=4
         self.registration_folder = os.path.abspath(folder)
         self.record = {}
