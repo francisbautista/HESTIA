@@ -4,23 +4,28 @@ Package to create a telegram bot with the telepot module
 import collections
 import telepot
 
+
 class Bot(telepot.Bot):
-     """
+    """
     The Telebot class use a telepot bot.
+
     The management of the bot's command is done through the handle decorator
         Example:
             @bot.handler("/start")
             def on_start():
                 bot.is_listen = True
                 return bot.sendMessage("Bot start")
+
             @bot.handler("/photo")
             def on_photo():
                 return bot.sendPhoto(camera.take_photo(), "photo")
+
     Commands can contain arguments arg=value (takes into account only words or numbers)
         Example for the command /hello arg=world:
             @bot.handler("/hello")
                 def on_video(*args):
                 return bot.send_message("Hello " + args[0])
+
     :param token_id : the token id
     :param chat_id : your chat_id
     """
@@ -37,6 +42,7 @@ class Bot(telepot.Bot):
     def is_listen(self):
         """
         Bot status
+
         :return: boolean
         """
         return bool(self._is_listen)
@@ -49,6 +55,7 @@ class Bot(telepot.Bot):
         """
         Decorator to create the bot commands
         Add commands as a function in a dictionary
+
         :param cmd: command name
         """
 
@@ -61,6 +68,7 @@ class Bot(telepot.Bot):
     def _get_args(self):
         """
         retrieves the arguments of the command
+
         :return: tuples arguments
         """
         args = self.command.split()
@@ -78,6 +86,7 @@ class Bot(telepot.Bot):
     def _postreceive(self, msg):
         """
         Callback for :attr message_loop()
+
         :param msg: message received
         """
         incoming_chat_id = msg['chat']['id']
@@ -91,6 +100,7 @@ class Bot(telepot.Bot):
     def send_photo(self, file, msg):
         """
         Encapsulates the sendPhoto method
+
         :param file: photo to send
         :param msg: picture title
         """
@@ -100,6 +110,7 @@ class Bot(telepot.Bot):
     def send_message(self, msg):
         """
         Encapsulates the sendMessage method
+
         :param msg: message to send
         """
         self.sendMessage(self.chat_id, str(msg))
@@ -107,6 +118,7 @@ class Bot(telepot.Bot):
     def send_video(self, video, msg):
         """
         Send the video if there are no errors in the recording, otherwise send the error message.
+
         :param video: a dictionary containing the name of the video,
                       the return code of the recording
                       and the error message if recording fail
