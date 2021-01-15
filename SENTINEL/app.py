@@ -6,7 +6,7 @@ import time
 
 
 from lib.camera import Camera
-from lib.telebot import Bot
+from lib.bot import Bot
 from lib.pir import MotionDetector
 from config import TOKEN_ID, REGISTRATION_FOLDER, VIDEO_TIME, CHAT_ID
 
