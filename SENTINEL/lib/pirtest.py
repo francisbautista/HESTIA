@@ -5,6 +5,8 @@ from gpiozero import MotionSensor
 import RPi.GPIO as GPIO
 import time
 
+GPIO.setup(pir, GPIO.IN)    
+
 class MotionDetector:  # pylint: disable=too-few-public-methods
     """
     Class to interfaces with Raspberry PI PIR motion sensor module
@@ -18,7 +20,15 @@ class MotionDetector:  # pylint: disable=too-few-public-methods
         Check if movement detected.
         :return: boolean
         """
-        return bool(self.pir.motion_detected)
+        if self.pir.motion_detected:      #If PIR pin goes high, motion is detected
+                print ("Motion Detected!")
+                time.sleep(5)
+                if self.pir.motion_detected:
+                    sm.SendSMS(ALERT_MESSAGE)
+                    print ("A lot of motion detected! Recording video.")        
+                    return bool(self.pir.motion_detected)
+                print ("Resetting")
+        
 
 
 pir = MotionDetector()
