@@ -25,8 +25,6 @@ class MotionDetector:  # pylint: disable=too-few-public-methods
                 print ("Motion Detected!")
                 time.sleep(5)
                 if self.pir.motion_detected:
-                    sm.SendSMS(ALERT_MESSAGE)
-                    print ("A lot of motion detected! Recording video.")        
                     return bool(self.pir.motion_detected)
                 print ("Resetting")
         

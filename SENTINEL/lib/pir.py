@@ -17,4 +17,9 @@ class MotionDetector:  # pylint: disable=too-few-public-methods
         Check if movement detected.
         :return: boolean
         """
-        return bool(self.pir.motion_detected)
+        if self.pir.motion_detected:      #If PIR pin goes high, motion is detected
+                print ("LOG: Motion Detected!")
+                time.sleep(5)
+                if self.pir.motion_detected:
+                    return bool(self.pir.motion_detected)
+                print ("LOG: PIR Resetting")

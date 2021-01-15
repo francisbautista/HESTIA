@@ -86,7 +86,7 @@ def on_clean():
     return bot.send_message(camera.purge_records())
 
 
-print('I am listening ...')
+print('LOG: I am listening ...')
 try:
     while True:
         if bot.is_listen and pir.movement_detected():
