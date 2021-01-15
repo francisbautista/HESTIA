@@ -6,12 +6,12 @@ import time
 
 
 from lib.camera import Camera
-from lib.bot import Bot
+from lib.telebot import Telebot
 from lib.pir import MotionDetector
 from config import TOKEN_ID, REGISTRATION_FOLDER, VIDEO_TIME, CHAT_ID
 
 camera = Camera(REGISTRATION_FOLDER)
-bot = Bot(TOKEN_ID, CHAT_ID)
+bot = Telebot(TOKEN_ID, CHAT_ID)
 pir = MotionDetector()
 
 
@@ -54,6 +54,7 @@ def on_photo():
 def on_video(*args):
     """
     command /video: record a video
+
     :param args: arguments of the bot's command
     """
     delay = args[0] if args else VIDEO_TIME
@@ -86,7 +87,7 @@ def on_clean():
     return bot.send_message(camera.purge_records())
 
 
-print('LOG: I am listening ...')
+print('I am listening ...')
 try:
     while True:
         if bot.is_listen and pir.movement_detected():

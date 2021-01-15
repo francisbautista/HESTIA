@@ -5,7 +5,7 @@ import collections
 import telepot
 
 
-class Bot(telepot.Bot):
+class Telebot(telepot.Bot):
     """
     The Telebot class use a telepot bot.
 
