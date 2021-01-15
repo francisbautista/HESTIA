@@ -5,7 +5,7 @@ from gpiozero import MotionSensor
 import RPi.GPIO as GPIO
 import time
 
-GPIO.setup(pir, GPIO.IN)    
+GPIO.setup(4, GPIO.IN)    
 
 class MotionDetector:  # pylint: disable=too-few-public-methods
     """
