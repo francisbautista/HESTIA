@@ -2,10 +2,11 @@
 Package for interfacing with Raspberry PI PIR motion sensor.
 """
 from gpiozero import MotionSensor
-import RPi.GPIO as GPIO
+# import RPi.GPIO as GPIO
 import time
 
-GPIO.setup(4, GPIO.IN)    
+# GPIO.setmode(GPIO.BOARD)
+# GPIO.setup(4, GPIO.IN)    
 
 class MotionDetector:  # pylint: disable=too-few-public-methods
     """
