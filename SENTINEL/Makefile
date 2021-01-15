@@ -58,13 +58,13 @@ check_token_id:
                 exit 1; \
         fi; \
 	
-test:
-	@echo "-------------------"; \
-	echo "---   Testing   ---"; \
-	echo "-------------------"; \
-	sudo systemctl stop ${SERVICE_NAME}; \
-	python3 -m unittest testsuite/*_test.py; \
-	sudo systemctl start ${SERVICE_NAME}; \
+# test:
+# 	@echo "-------------------"; \
+# 	echo "---   Testing   ---"; \
+# 	echo "-------------------"; \
+# 	sudo systemctl stop ${SERVICE_NAME}; \
+# 	python3 -m unittest testsuite/*_test.py; \
+# 	sudo systemctl start ${SERVICE_NAME}; \
 
 clean: clean-deps
 	@echo -e "\n--- Remove service --- "; \

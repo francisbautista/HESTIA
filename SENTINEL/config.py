@@ -3,8 +3,7 @@ configuration file
 """
 
 # Variable to configure
-TOKEN_ID = '1550414528:AAGq2XfHNjt45dzglVIbErxuPiYUgFqHBdo
-'
+TOKEN_ID = '1550414528:AAGq2XfHNjt45dzglVIbErxuPiYUgFqHBdo'
 CHAT_ID = '1550414528'
 
 # Variable that can be modified
