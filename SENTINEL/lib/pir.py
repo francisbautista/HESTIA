@@ -10,7 +10,7 @@ class MotionDetector:  # pylint: disable=too-few-public-methods
     """
 
     def __init__(self):
-        self.pir = MotionSensor(11)
+        self.pir = MotionSensor(4)
 
     def movement_detected(self):
         """
